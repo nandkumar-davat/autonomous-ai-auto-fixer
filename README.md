@@ -4,6 +4,11 @@ The **Autonomous AI Auto-Fixer** is an enterprise-grade agent designed to automa
 
 - [Implementation Plan](IMPLEMENTATION_PLAN.md)
 - [Task List](TASKS.md)
+- [Configuration & Ingestion Guide](docs/configuration.md)
+- [Architecture & Tech Stack](docs/architecture.md)
+- [Architecture Diagram (Draw.io)](docs/architecture.drawio)
+- [Deployment & Execution Guide](docs/deployment.md)
+- [Testing & Verification Guide](docs/testing_guide.md)
 
 
 ## Current Progress
