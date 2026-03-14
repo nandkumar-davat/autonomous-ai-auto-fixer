@@ -25,10 +25,10 @@
 - [x] Dependency version-bump remediation strategies
 
 ## Phase 4: Trivy Integration
-- [ ] Trivy API / Operator client
-- [ ] Trivy JSON/SARIF parser
-- [ ] Vulnerability mapping to internal schemas
-- [ ] Container/OS package update remediation strategies
+- [x] Trivy API / Operator client
+- [x] Trivy JSON/SARIF parser
+- [x] Vulnerability mapping to internal schemas
+- [x] Container/OS package update remediation strategies
 
 ## Phase 5: Remediation Engine & Validation
 - [x] Risk assessment module (Low/High risk classification)
