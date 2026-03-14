@@ -10,19 +10,19 @@
 - [x] Implement VCS authentication module (Azure DevOps & GitHub clients)
 - [x] Implement Git operations (clone, branch, commit, push)
 - [x] Implement PR creation and management API
-- [ ] Implement PR comment monitoring (human-in-the-loop)
+- [x] Implement PR comment monitoring (human-in-the-loop)
 
 ## Phase 2: SonarQube Integration
-- [ ] SonarQube API client (token auth, pagination)
-- [ ] SonarQube JSON file parser
-- [ ] Issue type mapping to internal remediation categories
-- [ ] Initial remediation strategies (unused imports, naming conventions)
+- [x] SonarQube API client (token auth, pagination)
+- [x] SonarQube JSON file parser
+- [x] Issue type mapping to internal remediation categories
+- [x] Initial remediation strategies (unused imports, naming conventions)
 
 ## Phase 3: Mend Integration
-- [ ] Mend API client (user keys, org tokens)
-- [ ] Mend file parsers (PDF, Excel, CSV)
-- [ ] Vulnerability mapping to internal schemas
-- [ ] Dependency version-bump remediation strategies
+- [x] Mend API client (user keys, org tokens)
+- [x] Mend file parsers (PDF, Excel, CSV)
+- [x] Vulnerability mapping to internal schemas
+- [x] Dependency version-bump remediation strategies
 
 ## Phase 4: Trivy Integration
 - [ ] Trivy API / Operator client

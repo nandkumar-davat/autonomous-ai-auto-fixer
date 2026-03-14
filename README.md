@@ -6,15 +6,21 @@ The **Autonomous AI Auto-Fixer** is an enterprise-grade agent designed to automa
 - [Task List](TASKS.md)
 
 
-## Key Features
+## Current Progress
+- [x] **Phase 1**: Core Framework & VCS Integration (Azure DevOps, GitHub)
+- [x] **Phase 2**: SonarQube Integration (API & File Ingestion)
+- [x] **Phase 3**: Mend Integration (SCA, PDF/Excel/CSV)
+- [ ] **Phase 4**: Trivy Integration (Planned)
+- [ ] **Phase 5**: Remediation Engine Optimization (Ongoing)
 
-- **Autonomous Remediation**: Automatically fixes code smells, bugs, and dependency vulnerabilities.
+## Key Features
+- **Autonomous Remediation**: Automatically fixes code smells, bugs, and dependency vulnerabilities using CodeSmell and Dependency strategies.
+- **VCS Clients**: Robust integration with Azure DevOps and GitHub for PR management.
 - **Risk Assessment**: Classifies findings into Low/High risk to ensure only safe changes are automated.
-- **Priority-Based Fixing**: Processes issues in priority order (Bugs → Vulnerabilities → Blocker → Critical → Major → High).
+- **Multi-Tool Ingestion**: Unified ingestion from SonarQube and Mend (vulnerability and technical debt).
+- **PR Monitoring**: Human-in-the-loop support via comment polling.
 - **Dry-Run Mode**: Supports a "Report Only" mode for human approval before applying any fixes.
-- **Multi-VCS Support**: Primary integration with Azure Repos, secondary with GitHub.
 - **Enterprise-Grade Security**: Integrated with Azure Key Vault for secure credential management.
-- **Validation Loop**: Every fix is validated via linters and (optionally) CI builds with AI self-correction.
 
 ## Tech Stack
 

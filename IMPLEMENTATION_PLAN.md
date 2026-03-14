@@ -12,6 +12,20 @@ Build a Python-based autonomous AI agent that integrates with **SonarQube**, **M
 
 ---
 
+## Current Project Status
+
+| Phase | Status | Key Components |
+|-------|--------|----------------|
+| **Phase 0** | ✅ | Scaffolding, `pyproject.toml`, Config schemas |
+| **Phase 1** | ✅ | VCS Clients (Azure/GitHub), Git Ops, PR Monitor |
+| **Phase 2** | ✅ | SonarQube API/File Ingester, Code Smell Strategies |
+| **Phase 3** | ✅ | Mend API/File Ingester (CSV/Excel/PDF), Dependency Bumps |
+| **Phase 4** | ⏳ | Trivy Ingester (SARIF/JSON) |
+| **Phase 5** | 🔄 | Core Engine, Risk Assessor (Implemented), Validation Loop |
+| **Phase 6** | ⏳ | Testing, Dockerization, Final Docs |
+
+---
+
 ## Proposed Project Structure
 
 ```
@@ -129,19 +143,17 @@ pip install -e ".[dev]"
 > [!NOTE]
 > The `.venv/` directory is added to `.gitignore`. All CI/CD pipelines and Docker builds will create their own isolated environments. The `pyproject.toml` pins `requires-python = ">=3.11"`.
 
-#### [NEW] `pyproject.toml`
+#### [DONE] `pyproject.toml`
 
 Python 3.11+ project with key dependencies:
 - **HTTP**: `httpx` (async-first HTTP client with retry/backoff)
-- **LLM**: GitHub Copilot integration (VS Code Auto mode / Claude Sonnet 4 for runtime code reasoning)
+- **LLM**: `anthropic` / `openai` (GitHub Copilot / Claude Sonnet 4 for runtime reasoning)
 - **Parsing**: `PyMuPDF` (PDF), `pandas` + `openpyxl` (Excel/CSV)
 - **Git**: `GitPython` for local git operations
 - **VCS APIs**: `azure-devops` (Azure DevOps Python SDK) — primary; `PyGithub` — secondary
 - **Secrets**: `azure-identity`, `azure-keyvault-secrets` (Azure Key Vault)
 - **Config**: `pyyaml`, `pydantic` (settings validation)
-- **CLI**: `click` or `typer` for command-line interface
-- **Linting**: `subprocess` calls to `flake8`, `eslint`, etc.
-- **Testing**: `pytest`, `pytest-asyncio`, `pytest-cov` (via `[dev]` optional deps)
+- **CLI**: `click` for command-line interface
 - **Audit**: `structlog` for structured, tamper-aware logging
 
 #### [NEW] `config/default.yaml`
@@ -178,7 +190,7 @@ Azure Key Vault integration:
 
 ---
 
-### Phase 1 — Core Agent, VCS Integration & Dry-Run Mode
+### Phase 1 — Core Agent, VCS Integration & Dry-Run Mode [COMPLETED]
 
 > [!IMPORTANT]
 > **Dry-Run is a first-class feature from Phase 1.** The agent starts in `dry-run` mode by default — it scans, classifies, and generates a remediation report but **does not modify code or create PRs**. Only when the user explicitly approves (switches to `fix` mode) does the agent apply changes.
@@ -231,7 +243,7 @@ Human-in-the-loop (VCS-agnostic via `BaseVCSClient`):
 
 ---
 
-### Phase 2 — SonarQube Integration
+### Phase 2 — SonarQube Integration [COMPLETED]
 
 #### [NEW] `src/autofixer/ingestion/sonarqube/api_client.py`
 
@@ -249,7 +261,7 @@ Human-in-the-loop (VCS-agnostic via `BaseVCSClient`):
 
 ---
 
-### Phase 3 — Mend Integration
+### Phase 3 — Mend Integration [COMPLETED]
 
 #### [NEW] `src/autofixer/ingestion/mend/api_client.py`
 
