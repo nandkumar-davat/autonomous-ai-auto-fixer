@@ -22,7 +22,7 @@ Build a Python-based autonomous AI agent that integrates with **SonarQube**, **M
 | **Phase 3** | ✅ | Mend API/File Ingester (CSV/Excel/PDF), Dependency Bumps |
 | **Phase 4** | ✅ | Trivy Ingester (SARIF/JSON) |
 | **Phase 5** | ✅ | Core Engine, Risk Assessor (Implemented), Validation Loop |
-| **Phase 6** | ⏳ | Testing, Dockerization, Final Docs |
+| **Phase 6** | ✅ | Testing, Dockerization, Final Docs |
 
 ---
 
@@ -344,7 +344,7 @@ Policy-driven classification combining **type/severity priority** and **risk lev
 
 ---
 
-### Phase 6 — Testing & Deployment
+### Phase 6 — Testing & Deployment [COMPLETED]
 
 #### [NEW] `tests/`
 

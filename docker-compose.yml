@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  autofixer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: autofixer:latest
+    container_name: autofixer-agent
+    volumes:
+      - ./config:/home/autofixer/app/config:ro
+      - ~/.azure:/home/autofixer/.azure:ro  # Mount local Azure CLI creds for development
+    environment:
+      # Optional explicit env vars if not using config files or AAD
+      - AZURE_TENANT_ID=${AZURE_TENANT_ID}
+      - AZURE_CLIENT_ID=${AZURE_CLIENT_ID}
+      - AZURE_CLIENT_SECRET=${AZURE_CLIENT_SECRET}
+      - KEYVAULT_URL=${KEYVAULT_URL}
+    command: ["--mode", "dry-run"]
