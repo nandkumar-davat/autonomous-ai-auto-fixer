@@ -9,7 +9,8 @@ logger = get_logger()
 @click.option("--mode", type=click.Choice(["dry-run", "fix"]), default="dry-run", help="Execution mode")
 @click.option("--config", "config_path", default="config/default.yaml", help="Path to config file")
 @click.option("--repo", "repo_name", help="Specify a single repository to scan")
-def main(mode, config_path, repo_name):
+@click.option("--branch", "base_branch", help="The base branch to scan and branch off from (e.g., 'main', 'develop')")
+def main(mode, config_path, repo_name, base_branch):
     """Autonomous AI Auto-Fixer Entrypoint."""
     
     # Load configuration
@@ -17,8 +18,10 @@ def main(mode, config_path, repo_name):
     
     # Override mode from CLI
     cfg.agent.mode = mode
+    if base_branch:
+        cfg.agent.base_branch = base_branch
     
-    logger.info("Initializing Autonomous AI Auto-Fixer", mode=cfg.agent.mode)
+    logger.info("Initializing Autonomous AI Auto-Fixer", mode=cfg.agent.mode, branch=cfg.agent.base_branch)
     
     if cfg.agent.mode == "dry-run":
         logger.info("Running in DRY-RUN mode. No changes will be applied.")

@@ -7,6 +7,7 @@ class AgentConfig(BaseModel):
     mode: str = "dry-run"
     max_retries: int = 3
     risk_policy: str = "low-risk-only"
+    base_branch: str = "main"
 
 class AzureDevOpsConfig(BaseModel):
     org_url: Optional[str] = None
