@@ -34,9 +34,9 @@
 - [x] Risk assessment module (Low/High risk classification)
 - [x] Context-aware code retrieval (50+ lines surrounding context)
 - [x] LLM integration and prompt engineering
-- [ ] Syntax validation module (linter integration)
-- [ ] Optional CI build verification hooks
-- [ ] LLM self-correction mechanism (max 3 retries)
+- [x] Syntax validation module (linter integration)
+- [x] Optional CI build verification hooks
+- [x] LLM self-correction mechanism (max 3 retries)
 
 ## Phase 6: Testing, Deployment & Documentation
 - [ ] Unit tests for all modules

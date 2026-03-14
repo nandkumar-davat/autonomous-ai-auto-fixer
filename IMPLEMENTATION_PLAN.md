@@ -21,7 +21,7 @@ Build a Python-based autonomous AI agent that integrates with **SonarQube**, **M
 | **Phase 2** | ✅ | SonarQube API/File Ingester, Code Smell Strategies |
 | **Phase 3** | ✅ | Mend API/File Ingester (CSV/Excel/PDF), Dependency Bumps |
 | **Phase 4** | ✅ | Trivy Ingester (SARIF/JSON) |
-| **Phase 5** | 🔄 | Core Engine, Risk Assessor (Implemented), Validation Loop |
+| **Phase 5** | ✅ | Core Engine, Risk Assessor (Implemented), Validation Loop |
 | **Phase 6** | ⏳ | Testing, Dockerization, Final Docs |
 
 ---
@@ -291,7 +291,7 @@ Human-in-the-loop (VCS-agnostic via `BaseVCSClient`):
 
 ---
 
-### Phase 5 — Remediation Engine & Validation
+### Phase 5 — Remediation Engine & Validation [COMPLETED]
 
 #### Issue Fix Priority Order
 
