@@ -1,0 +1,56 @@
+# Default Configuration for Autonomous AI Auto-Fixer
+
+agent:
+  mode: dry-run  # options: dry-run, fix
+  max_retries: 3
+  risk_policy: low-risk-only
+
+vcs:
+  primary: azure-devops
+  azure_devops:
+    org_url: "https://dev.azure.com/your-org"
+    project: "your-project"
+  github:
+    app_id: null
+    installation_id: null
+
+llm:
+  provider: github-copilot
+  model: auto
+  temperature: 0.0
+  max_tokens: 4096
+
+secrets:
+  source: azure-keyvault
+  vault_url: "https://your-vault.vault.azure.net/"
+  tenant_id: null
+
+ingestion:
+  sonarqube:
+    url: null
+    prioritize_bugs: true
+  mend:
+    enabled: true
+  trivy:
+    enabled: true
+
+remediation:
+  priority_order:
+    - BUG
+    - VULNERABILITY
+    - BLOCKER
+    - CRITICAL
+    - MAJOR  # Requires approval
+    - HIGH   # Requires approval
+  approval_required:
+    - MAJOR
+    - HIGH
+  context_lines: 50
+
+validation:
+  linters:
+    python: ["flake8", "black", "isort"]
+    javascript: ["eslint"]
+    java: ["checkstyle"]
+  build_verification:
+    enabled: false
