@@ -146,3 +146,4 @@ cython_debug/
 
 # VS Code
 .vscode/
+manual_reports/*

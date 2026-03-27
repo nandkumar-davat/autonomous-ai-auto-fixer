@@ -29,9 +29,10 @@ class LLMConfig(BaseModel):
     max_tokens: int = 4096
 
 class SecretConfig(BaseModel):
-    source: str = "azure-keyvault"
+    source: str = "azure-keyvault"  # 'azure-keyvault' or 'environment'
     vault_url: Optional[str] = None
     tenant_id: Optional[str] = None
+    github_token_secret_name: str = "github-token"
 
 class Config(BaseModel):
     agent: AgentConfig = Field(default_factory=AgentConfig)

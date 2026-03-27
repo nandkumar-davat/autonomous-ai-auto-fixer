@@ -9,8 +9,13 @@ class GitHubClient(BaseVCSClient):
     """Client for GitHub Repos using PyGithub."""
 
     def __init__(self, token: str):
-        self.auth = Auth.Token(token)
-        self.github = Github(auth=self.auth)
+        self.token = token
+        self.demo_mode = token == "demo-token"
+        if not self.demo_mode:
+            self.auth = Auth.Token(token)
+            self.github = Github(auth=self.auth)
+        else:
+            logger.info("GitHub client initialized in demo mode")
 
     def create_pull_request(
         self, 
@@ -21,7 +26,15 @@ class GitHubClient(BaseVCSClient):
         base_branch: str = "main"
     ) -> str:
         """Creates a PR on GitHub."""
-        logger.info("Creating GitHub PR", repo=repo_name, branch=branch_name)
+        logger.info("Creating GitHub PR", repo=repo_name, branch=branch_name, demo_mode=self.demo_mode)
+        
+        if self.demo_mode:
+            # Return mock PR URL for demo
+            pr_url = f"https://github.com/{repo_name}/pull/123"
+            logger.info("Demo mode: Mock GitHub PR created", pr_url=pr_url)
+            return pr_url
+        
+        # Real GitHub API call
         repo = self.github.get_repo(repo_name)
         pr = repo.create_pull(
             title=title,

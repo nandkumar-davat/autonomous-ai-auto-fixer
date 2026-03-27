@@ -10,21 +10,32 @@ logger = get_logger()
 class GitOperations:
     """Handles local git operations like cloning, branching, and committing."""
 
-    def __init__(self, workspace_dir: str = "workspace"):
+    def __init__(self, workspace_dir: str = "workspace", github_token: Optional[str] = None):
         self.workspace_dir = Path(workspace_dir)
+        self.github_token = github_token
         if not self.workspace_dir.exists():
             self.workspace_dir.mkdir(parents=True)
 
     def clone_repository(self, repo_url: str, repo_name: str) -> git.Repo:
         """Clones a repository into the workspace directory."""
         repo_path = self.workspace_dir / repo_name
+        
+        # Use authenticated URL if token is available
+        if self.github_token and repo_url.startswith("https://github.com"):
+            auth_url = repo_url.replace("https://github.com", f"https://{self.github_token}@github.com")
+        else:
+            auth_url = repo_url
+            
         if repo_path.exists():
             logger.info("Repository already exists, pulling latest changes", path=repo_path)
             repo = git.Repo(repo_path)
-            repo.remotes.origin.pull()
+            try:
+                repo.remotes.origin.pull()
+            except Exception as e:
+                logger.warning("Failed to pull latest changes", error=str(e))
         else:
             logger.info("Cloning repository", url=repo_url, path=repo_path)
-            repo = git.Repo.clone_from(repo_url, repo_path)
+            repo = git.Repo.clone_from(auth_url, repo_path)
         return repo
 
     def create_branch(self, repo: git.Repo, branch_name: str) -> None:
