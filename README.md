@@ -21,6 +21,32 @@ An enterprise-grade AI-powered agent for automated remediation of security vulne
 - **Risk Assessment**: Low/High classification for safe automation
 - **Dry-Run Mode**: Preview changes before applying
 
+## Enhanced Scanning Process ✨ **NEW**
+
+The auto-fixer now uses **scanner-specific fix methodologies** for improved reliability and consistency:
+
+### Systematic 5-Step Fix Process
+Each scanner type follows a structured approach:
+1. **Parse Scan Results** - Extract and understand findings
+2. **Categorize by Priority** - Process CRITICAL → HIGH → MEDIUM → LOW
+3. **Apply Fixes Systematically** - Use scanner-specific strategies  
+4. **Generate Fix Summary** - Structured documentation
+5. **Create Structured Commits** - Conventional commit format
+
+### Scanner-Specific Intelligence
+- **🛡️ Mend**: Handles `topFix.fixResolution` recommendations, library upgrades, transitive dependencies
+- **🔍 Trivy**: Manages container/app vulnerabilities, zero-day handling, mitigation strategies
+- **📊 SonarQube**: Focuses on BUG/VULNERABILITY types, rule-specific fixes (SQL injection, security headers)
+
+### Benefits
+- **Consistency**: Standardized approach across all scanners
+- **Reliability**: Systematic methodology reduces fix errors  
+- **Traceability**: Clear documentation of all changes
+- **Prioritization**: Critical issues addressed first
+- **Intelligence**: Scanner-specific best practices applied
+
+See [Enhanced Scanning Process Documentation](docs/enhanced_scanning_process.md) for details.
+
 ## Quick Start
 
 ```bash

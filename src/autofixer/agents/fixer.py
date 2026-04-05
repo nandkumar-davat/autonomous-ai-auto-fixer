@@ -30,7 +30,9 @@ from autofixer.agents.messages import (
     FixStrategy,
     ProposedFix,
 )
+from autofixer.agents.prompts.loader import load_prompt
 from autofixer.llm.base import BaseLLMProvider
+from autofixer.models.enums import ToolSource
 from autofixer.remediation.context_retriever import ContextRetriever
 from autofixer.validation.linter import LinterValidator
 from autofixer.vcs.git_ops import GitOperations
@@ -100,6 +102,13 @@ class FixerAgent(BaseAgent):
         )
 
         self.system_prompt = self._load_system_prompt("fixer")
+        
+        # Load scanner-specific prompts
+        self.scanner_prompts = {
+            ToolSource.MEND: load_prompt("mend_security_fixer"),
+            ToolSource.TRIVY: load_prompt("trivy_security_fixer"), 
+            ToolSource.SONARQUBE: load_prompt("sonarqube_issue_fixer"),
+        }
 
     # -----------------------------------------------------------------
     # Public API
@@ -449,7 +458,7 @@ class FixerAgent(BaseAgent):
         file_path: str,
         content: str,
     ) -> Optional[str]:
-        """Use the LLM to generate a fix from scratch."""
+        """Use the LLM to generate a fix from scratch using scanner-specific prompts."""
         # Build focused context around the affected line
         line = fix.metadata.get("line")
         if line is not None:
@@ -460,17 +469,17 @@ class FixerAgent(BaseAgent):
             # Use first 120 lines as context
             context = "\n".join(content.splitlines()[:120])
 
-        user_prompt = (
-            f"Fix the following issue in `{file_path}`.\n\n"
-            f"FINDING: {fix.description}\n"
-            f"STRATEGY: {fix.strategy.value}\n\n"
-            f"CODE CONTEXT:\n```\n{context}\n```\n\n"
-            "Return ONLY the corrected code for the snippet above.  "
-            "Do not include explanations."
+        # Use scanner-specific prompt if available
+        source_tool = fix.metadata.get("source_tool")
+        system_prompt = self._get_scanner_prompt(source_tool)
+        
+        # Build scanner-aware user prompt
+        user_prompt = self._build_scanner_aware_prompt(
+            fix, file_path, context, source_tool
         )
 
         raw = self._call_llm(
-            self.system_prompt,
+            system_prompt,
             user_prompt,
             temperature=0.0,
             max_tokens=4096,
@@ -496,17 +505,21 @@ class FixerAgent(BaseAgent):
         content: str,
         fix_type: str,
     ) -> Optional[str]:
-        """LLM fallback that operates on the entire file content."""
+        """LLM fallback that operates on the entire file content with scanner-specific prompts."""
+        source_tool = fix.metadata.get("source_tool")
+        system_prompt = self._get_scanner_prompt(source_tool)
+        
         user_prompt = (
-            f"Apply a {fix_type} to the following file.\n\n"
+            f"Apply a {fix_type} to the following file following the systematic approach.\n\n"
             f"FINDING: {fix.description}\n"
+            f"SCANNER: {source_tool or 'Unknown'}\n"
             f"SUGGESTED CHANGE: {fix.suggested_change or 'N/A'}\n\n"
             f"FULL FILE:\n```\n{content[:6000]}\n```\n\n"
-            "Return ONLY the complete corrected file content."
+            "Return ONLY the complete corrected file content. Follow the scanner-specific methodology."
         )
 
         raw = self._call_llm(
-            self.system_prompt,
+            system_prompt,
             user_prompt,
             temperature=0.0,
             max_tokens=8192,
@@ -622,3 +635,58 @@ class FixerAgent(BaseAgent):
         if first in lang_tags:
             lines = lines[1:]
         return "\n".join(lines).strip()
+    
+    # -----------------------------------------------------------------
+    # Scanner-specific prompt handling
+    # -----------------------------------------------------------------
+    
+    def _get_scanner_prompt(self, source_tool: Optional[str]) -> str:
+        """Get the appropriate system prompt based on the scanner source."""
+        if source_tool and hasattr(ToolSource, source_tool.upper()):
+            tool_enum = getattr(ToolSource, source_tool.upper())
+            scanner_prompt = self.scanner_prompts.get(tool_enum)
+            if scanner_prompt:
+                return scanner_prompt
+        
+        # Fallback to default fixer prompt
+        return self.system_prompt
+        
+    def _build_scanner_aware_prompt(
+        self, 
+        fix: ProposedFix, 
+        file_path: str, 
+        context: str,
+        source_tool: Optional[str]
+    ) -> str:
+        """Build a user prompt that's aware of the scanner type."""
+        base_prompt = (
+            f"Fix the following issue in `{file_path}` using the systematic approach "
+            f"outlined in the system prompt.\\n\\n"
+            f"FINDING: {fix.description}\\n"
+            f"SCANNER: {source_tool or 'Unknown'}\\n"
+            f"STRATEGY: {fix.strategy.value}\\n"
+        )
+        
+        # Add scanner-specific context
+        if source_tool:
+            if source_tool.upper() == "MEND":
+                base_prompt += f"CVE/VULNERABILITY ID: {fix.finding_id}\\n"
+                if fix.suggested_change:
+                    base_prompt += f"RECOMMENDED FIX: {fix.suggested_change}\\n"
+            elif source_tool.upper() == "SONARQUBE":
+                base_prompt += f"SONARQUBE KEY: {fix.finding_id}\\n"
+                if fix.metadata.get("rule_id"):
+                    base_prompt += f"RULE ID: {fix.metadata.get('rule_id')}\\n"
+            elif source_tool.upper() == "TRIVY": 
+                base_prompt += f"CVE ID: {fix.finding_id}\\n"
+                if fix.suggested_change:
+                    base_prompt += f"FIXED VERSION: {fix.suggested_change}\\n"
+        
+        base_prompt += (
+            f"\\nCODE CONTEXT:\\n```\\n{context}\\n```\\n\\n"
+            "Apply the fix following the systematic methodology. "
+            "Return ONLY the corrected code for the snippet above. "
+            "Do not include explanations or markdown."
+        )
+        
+        return base_prompt

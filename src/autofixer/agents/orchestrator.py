@@ -54,9 +54,17 @@ class AgentOrchestrator:
     def _init_llm_provider(self) -> BaseLLMProvider:
         """Create an LLM provider (or fallback chain) from config."""
         provider_names: List[str] = self.config.llm.providers
+        
+        # Pass model and other LLM config to providers
+        provider_kwargs = {
+            'model': self.config.llm.model,
+            'temperature': self.config.llm.temperature,
+            'max_tokens': self.config.llm.max_tokens,
+        }
+        
         if len(provider_names) == 1:
-            return LLMProviderFactory.create_provider(provider_names[0])
-        return LLMProviderFactory.create_fallback_chain(provider_names)
+            return LLMProviderFactory.create_provider(provider_names[0], **provider_kwargs)
+        return LLMProviderFactory.create_fallback_chain(provider_names, **provider_kwargs)
 
     # ------------------------------------------------------------------
     # Public API

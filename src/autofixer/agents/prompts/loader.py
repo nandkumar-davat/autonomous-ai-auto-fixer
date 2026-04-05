@@ -16,6 +16,9 @@ _PROMPTS_DIR = Path(__file__).parent
 # Valid agent names that have corresponding prompt files
 _VALID_AGENTS = frozenset({"auditor", "team_lead", "fixer", "verifier"})
 
+# Scanner-specific fixer prompt files
+_SCANNER_FIXERS = frozenset({"mend_security_fixer", "trivy_security_fixer", "sonarqube_issue_fixer"})
+
 
 def load_prompt(agent_name: str) -> str:
     """Load the system prompt for a given agent.
@@ -25,7 +28,8 @@ def load_prompt(agent_name: str) -> str:
 
     Args:
         agent_name: The name of the agent whose prompt to load.
-            Must be one of: ``auditor``, ``team_lead``, ``fixer``, ``verifier``.
+            Must be one of: ``auditor``, ``team_lead``, ``fixer``, ``verifier``,
+            or a scanner-specific fixer: ``mend_security_fixer``, ``trivy_security_fixer``, ``sonarqube_issue_fixer``.
 
     Returns:
         The full text of the agent's system prompt.
@@ -34,10 +38,11 @@ def load_prompt(agent_name: str) -> str:
         ValueError: If ``agent_name`` is not a recognised agent.
         FileNotFoundError: If the prompt file does not exist on disk.
     """
-    if agent_name not in _VALID_AGENTS:
+    valid_names = _VALID_AGENTS | _SCANNER_FIXERS
+    if agent_name not in valid_names:
         raise ValueError(
             f"Unknown agent name '{agent_name}'. "
-            f"Valid agents are: {', '.join(sorted(_VALID_AGENTS))}"
+            f"Valid agents are: {', '.join(sorted(valid_names))}"
         )
 
     return _load_prompt_cached(agent_name)
@@ -66,7 +71,8 @@ def list_available_agents() -> list[str]:
         A list of agent name strings.
     """
     available = []
-    for name in sorted(_VALID_AGENTS):
+    all_valid_names = _VALID_AGENTS | _SCANNER_FIXERS
+    for name in sorted(all_valid_names):
         prompt_path = _PROMPTS_DIR / f"{name}.md"
         if prompt_path.exists():
             available.append(name)

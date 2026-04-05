@@ -14,15 +14,20 @@ vcs:
   github:
     app_id: null
     installation_id: null
+    pat_token: GITHUB_TOKEN
+
+repository:
+  path: /workspaces/AMPTLMCalculations
+  branch: sonar-stg
 
 llm:
-  provider: github-copilot
+  provider: github_copilot
   providers:
     - github_copilot
-    - gemini
     - openrouter
+    - gemini 
     - ollama
-  model: auto
+  model: "auto"
   temperature: 0.0
   max_tokens: 4096
 

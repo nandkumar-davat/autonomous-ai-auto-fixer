@@ -1,0 +1,1258 @@
+{
+    "total": 10,
+    "p": 1,
+    "ps": 100,
+    "paging": {
+        "pageIndex": 1,
+        "pageSize": 100,
+        "total": 10
+    },
+    "effortTotal": 75,
+    "issues": [
+        {
+            "key": "05983798-e18a-4953-8894-970a94d2afeb",
+            "rule": "csharpsquid:S2259",
+            "severity": "MAJOR",
+            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+            "project": "EAR-AA-28260_AMPTLMCalculations",
+            "line": 753,
+            "hash": "7329276d9b2be74ddb5a48be0e461490",
+            "textRange": {
+                "startLine": 753,
+                "endLine": 753,
+                "startOffset": 56,
+                "endOffset": 126
+            },
+            "flows": [
+                {
+                    "locations": [
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 753,
+                                "endLine": 753,
+                                "startOffset": 56,
+                                "endOffset": 126
+                            },
+                            "msg": "Then a \u0027NullReferenceException\u0027 is thrown",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 753,
+                                "endLine": 753,
+                                "startOffset": 56,
+                                "endOffset": 126
+                            },
+                            "msg": "If the expression is \u0027null\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 750,
+                                "endLine": 750,
+                                "startOffset": 50,
+                                "endOffset": 72
+                            },
+                            "msg": "If the expression is \u0027true\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 750,
+                                "endLine": 750,
+                                "startOffset": 28,
+                                "endOffset": 46
+                            },
+                            "msg": "If \u0027delvieries\u0027 is \u0027not null\u0027 and the expression is \u0027true\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 734,
+                                "endLine": 734,
+                                "startOffset": 43,
+                                "endOffset": 76
+                            },
+                            "msg": "If the expression is \u0027true\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 726,
+                                "endLine": 726,
+                                "startOffset": 34,
+                                "endOffset": 112
+                            },
+                            "msg": "If the expression is \u0027not null\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 724,
+                                "endLine": 724,
+                                "startOffset": 38,
+                                "endOffset": 134
+                            },
+                            "msg": "If the expression is \u0027not null\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 721,
+                                "endLine": 721,
+                                "startOffset": 40,
+                                "endOffset": 62
+                            },
+                            "msg": "\u0027usageDetails\u0027 is \u0027not empty\u0027, so the expression is \u0027true\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 721,
+                                "endLine": 721,
+                                "startOffset": 16,
+                                "endOffset": 36
+                            },
+                            "msg": "\u0027usageDetails\u0027 is \u0027not empty\u0027, so the expression is \u0027true\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 712,
+                                "endLine": 712,
+                                "startOffset": 46,
+                                "endOffset": 111
+                            },
+                            "msg": "If the expression is \u0027null\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 710,
+                                "endLine": 710,
+                                "startOffset": 40,
+                                "endOffset": 62
+                            },
+                            "msg": "If \u0027usageDetails\u0027 is \u0027not empty\u0027 and the expression is \u0027true\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 710,
+                                "endLine": 710,
+                                "startOffset": 16,
+                                "endOffset": 36
+                            },
+                            "msg": "If \u0027usageDetails\u0027 is \u0027not null\u0027 and the expression is \u0027true\u0027",
+                            "msgFormattings": []
+                        }
+                    ],
+                    "description": "Execution Flow",
+                    "type": "EXECUTION"
+                }
+            ],
+            "status": "OPEN",
+            "message": "\u0027delvieries.OrderByDescending(x \u003d\u003e x.LastDeliveryDate).FirstOrDefault()\u0027 is null on at least one execution path.",
+            "effort": "10min",
+            "debt": "10min",
+            "author": "",
+            "tags": [
+                "cwe"
+            ],
+            "transitions": [
+                "accept",
+                "falsepositive",
+                "confirm",
+                "resolve",
+                "wontfix"
+            ],
+            "actions": [
+                "set_type",
+                "set_tags",
+                "comment",
+                "set_severity",
+                "assign"
+            ],
+            "comments": [],
+            "creationDate": "2026-03-11T05:09:54+0000",
+            "updateDate": "2026-03-11T05:09:54+0000",
+            "type": "BUG",
+            "branch": "sonar-stg",
+            "scope": "MAIN",
+            "quickFixAvailable": false,
+            "messageFormattings": [],
+            "codeVariants": [],
+            "cleanCodeAttribute": "LOGICAL",
+            "cleanCodeAttributeCategory": "INTENTIONAL",
+            "impacts": [
+                {
+                    "softwareQuality": "RELIABILITY",
+                    "severity": "MEDIUM"
+                }
+            ],
+            "issueStatus": "OPEN",
+            "prioritizedRule": false
+        },
+        {
+            "key": "9a3c48ca-0285-46b0-9609-c469569bc855",
+            "rule": "csharpsquid:S1244",
+            "severity": "MAJOR",
+            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+            "project": "EAR-AA-28260_AMPTLMCalculations",
+            "line": 796,
+            "hash": "eaa859e6593e55dbd48cbf0c07458bff",
+            "textRange": {
+                "startLine": 796,
+                "endLine": 796,
+                "startOffset": 81,
+                "endOffset": 83
+            },
+            "flows": [],
+            "status": "OPEN",
+            "message": "Do not check floating point inequality with exact values, use a range instead.",
+            "effort": "5min",
+            "debt": "5min",
+            "author": "",
+            "tags": [],
+            "transitions": [
+                "accept",
+                "falsepositive",
+                "confirm",
+                "resolve",
+                "wontfix"
+            ],
+            "actions": [
+                "set_type",
+                "set_tags",
+                "comment",
+                "set_severity",
+                "assign"
+            ],
+            "comments": [],
+            "creationDate": "2026-03-11T05:09:54+0000",
+            "updateDate": "2026-03-11T05:09:54+0000",
+            "type": "BUG",
+            "branch": "sonar-stg",
+            "scope": "MAIN",
+            "quickFixAvailable": false,
+            "messageFormattings": [],
+            "codeVariants": [],
+            "cleanCodeAttribute": "LOGICAL",
+            "cleanCodeAttributeCategory": "INTENTIONAL",
+            "impacts": [
+                {
+                    "softwareQuality": "RELIABILITY",
+                    "severity": "MEDIUM"
+                }
+            ],
+            "issueStatus": "OPEN",
+            "prioritizedRule": false
+        },
+        {
+            "key": "2e99f886-c8e9-49cb-87fe-3811df70c36c",
+            "rule": "csharpsquid:S1244",
+            "severity": "MAJOR",
+            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+            "project": "EAR-AA-28260_AMPTLMCalculations",
+            "line": 955,
+            "hash": "eaa859e6593e55dbd48cbf0c07458bff",
+            "textRange": {
+                "startLine": 955,
+                "endLine": 955,
+                "startOffset": 85,
+                "endOffset": 87
+            },
+            "flows": [],
+            "status": "OPEN",
+            "message": "Do not check floating point inequality with exact values, use a range instead.",
+            "effort": "5min",
+            "debt": "5min",
+            "author": "",
+            "tags": [],
+            "transitions": [
+                "accept",
+                "falsepositive",
+                "confirm",
+                "resolve",
+                "wontfix"
+            ],
+            "actions": [
+                "set_type",
+                "set_tags",
+                "comment",
+                "set_severity",
+                "assign"
+            ],
+            "comments": [],
+            "creationDate": "2026-03-11T05:09:54+0000",
+            "updateDate": "2026-03-11T05:09:54+0000",
+            "type": "BUG",
+            "branch": "sonar-stg",
+            "scope": "MAIN",
+            "quickFixAvailable": false,
+            "messageFormattings": [],
+            "codeVariants": [],
+            "cleanCodeAttribute": "LOGICAL",
+            "cleanCodeAttributeCategory": "INTENTIONAL",
+            "impacts": [
+                {
+                    "softwareQuality": "RELIABILITY",
+                    "severity": "MEDIUM"
+                }
+            ],
+            "issueStatus": "OPEN",
+            "prioritizedRule": false
+        },
+        {
+            "key": "d2237e9b-acc5-4d91-8820-f891d5e60698",
+            "rule": "csharpsquid:S1244",
+            "severity": "MAJOR",
+            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+            "project": "EAR-AA-28260_AMPTLMCalculations",
+            "line": 1094,
+            "hash": "eaa859e6593e55dbd48cbf0c07458bff",
+            "textRange": {
+                "startLine": 1094,
+                "endLine": 1094,
+                "startOffset": 81,
+                "endOffset": 83
+            },
+            "flows": [],
+            "status": "OPEN",
+            "message": "Do not check floating point inequality with exact values, use a range instead.",
+            "effort": "5min",
+            "debt": "5min",
+            "author": "",
+            "tags": [],
+            "transitions": [
+                "accept",
+                "falsepositive",
+                "confirm",
+                "resolve",
+                "wontfix"
+            ],
+            "actions": [
+                "set_type",
+                "set_tags",
+                "comment",
+                "set_severity",
+                "assign"
+            ],
+            "comments": [],
+            "creationDate": "2026-03-11T05:09:54+0000",
+            "updateDate": "2026-03-11T05:09:54+0000",
+            "type": "BUG",
+            "branch": "sonar-stg",
+            "scope": "MAIN",
+            "quickFixAvailable": false,
+            "messageFormattings": [],
+            "codeVariants": [],
+            "cleanCodeAttribute": "LOGICAL",
+            "cleanCodeAttributeCategory": "INTENTIONAL",
+            "impacts": [
+                {
+                    "softwareQuality": "RELIABILITY",
+                    "severity": "MEDIUM"
+                }
+            ],
+            "issueStatus": "OPEN",
+            "prioritizedRule": false
+        },
+        {
+            "key": "4a255f91-cc14-447c-9fde-2dd38ae59a42",
+            "rule": "csharpsquid:S2259",
+            "severity": "MAJOR",
+            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+            "project": "EAR-AA-28260_AMPTLMCalculations",
+            "line": 1197,
+            "hash": "7acdd8b40f7c3257bcea33b8fae81da8",
+            "textRange": {
+                "startLine": 1197,
+                "endLine": 1197,
+                "startOffset": 42,
+                "endOffset": 107
+            },
+            "flows": [
+                {
+                    "locations": [
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 1197,
+                                "endLine": 1197,
+                                "startOffset": 42,
+                                "endOffset": 107
+                            },
+                            "msg": "Then a \u0027NullReferenceException\u0027 is thrown",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 1197,
+                                "endLine": 1197,
+                                "startOffset": 42,
+                                "endOffset": 107
+                            },
+                            "msg": "If the expression is \u0027null\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 1194,
+                                "endLine": 1194,
+                                "startOffset": 20,
+                                "endOffset": 80
+                            },
+                            "msg": "If the expression is \u0027true\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 1183,
+                                "endLine": 1183,
+                                "startOffset": 51,
+                                "endOffset": 80
+                            },
+                            "msg": "If \u0027PreviousMeasurement\u0027 is \u0027empty\u0027 and the expression is \u0027false\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 1172,
+                                "endLine": 1172,
+                                "startOffset": 16,
+                                "endOffset": 62
+                            },
+                            "msg": "If \u0027UsageRateType\u0027 is \u0027not null\u0027 and the expression is \u0027true\u0027",
+                            "msgFormattings": []
+                        }
+                    ],
+                    "description": "Execution Flow",
+                    "type": "EXECUTION"
+                }
+            ],
+            "status": "OPEN",
+            "message": "\u0027dailyentries.OrderBy(x \u003d\u003e x.LastMeasurementDate).FirstOrDefault()\u0027 is null on at least one execution path.",
+            "effort": "10min",
+            "debt": "10min",
+            "author": "",
+            "tags": [
+                "cwe"
+            ],
+            "transitions": [
+                "accept",
+                "falsepositive",
+                "confirm",
+                "resolve",
+                "wontfix"
+            ],
+            "actions": [
+                "set_type",
+                "set_tags",
+                "comment",
+                "set_severity",
+                "assign"
+            ],
+            "comments": [],
+            "creationDate": "2026-03-11T05:09:54+0000",
+            "updateDate": "2026-03-11T05:09:54+0000",
+            "type": "BUG",
+            "branch": "sonar-stg",
+            "scope": "MAIN",
+            "quickFixAvailable": false,
+            "messageFormattings": [],
+            "codeVariants": [],
+            "cleanCodeAttribute": "LOGICAL",
+            "cleanCodeAttributeCategory": "INTENTIONAL",
+            "impacts": [
+                {
+                    "softwareQuality": "RELIABILITY",
+                    "severity": "MEDIUM"
+                }
+            ],
+            "issueStatus": "OPEN",
+            "prioritizedRule": false
+        },
+        {
+            "key": "ebd9bc6c-8718-46d0-bb77-643512288c68",
+            "rule": "csharpsquid:S1244",
+            "severity": "MAJOR",
+            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+            "project": "EAR-AA-28260_AMPTLMCalculations",
+            "line": 1241,
+            "hash": "2977e999d5465f6ea93a753af79b4d4e",
+            "textRange": {
+                "startLine": 1241,
+                "endLine": 1241,
+                "startOffset": 86,
+                "endOffset": 88
+            },
+            "flows": [],
+            "status": "OPEN",
+            "message": "Do not check floating point inequality with exact values, use a range instead.",
+            "effort": "5min",
+            "debt": "5min",
+            "author": "",
+            "tags": [],
+            "transitions": [
+                "accept",
+                "falsepositive",
+                "confirm",
+                "resolve",
+                "wontfix"
+            ],
+            "actions": [
+                "set_type",
+                "set_tags",
+                "comment",
+                "set_severity",
+                "assign"
+            ],
+            "comments": [],
+            "creationDate": "2026-03-11T05:09:54+0000",
+            "updateDate": "2026-03-11T05:09:54+0000",
+            "type": "BUG",
+            "branch": "sonar-stg",
+            "scope": "MAIN",
+            "quickFixAvailable": false,
+            "messageFormattings": [],
+            "codeVariants": [],
+            "cleanCodeAttribute": "LOGICAL",
+            "cleanCodeAttributeCategory": "INTENTIONAL",
+            "impacts": [
+                {
+                    "softwareQuality": "RELIABILITY",
+                    "severity": "MEDIUM"
+                }
+            ],
+            "issueStatus": "OPEN",
+            "prioritizedRule": false
+        },
+        {
+            "key": "b9fb8ebf-b11f-49d2-a1a5-66279e657a09",
+            "rule": "csharpsquid:S1244",
+            "severity": "MAJOR",
+            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+            "project": "EAR-AA-28260_AMPTLMCalculations",
+            "line": 1350,
+            "hash": "cf17ac4d69c3211d66b392ce2c5cc8e7",
+            "textRange": {
+                "startLine": 1350,
+                "endLine": 1350,
+                "startOffset": 50,
+                "endOffset": 52
+            },
+            "flows": [],
+            "status": "OPEN",
+            "message": "Do not check floating point inequality with exact values, use a range instead.",
+            "effort": "5min",
+            "debt": "5min",
+            "author": "",
+            "tags": [],
+            "transitions": [
+                "accept",
+                "falsepositive",
+                "confirm",
+                "resolve",
+                "wontfix"
+            ],
+            "actions": [
+                "set_type",
+                "set_tags",
+                "comment",
+                "set_severity",
+                "assign"
+            ],
+            "comments": [],
+            "creationDate": "2026-03-11T05:09:54+0000",
+            "updateDate": "2026-03-11T05:09:54+0000",
+            "type": "BUG",
+            "branch": "sonar-stg",
+            "scope": "MAIN",
+            "quickFixAvailable": false,
+            "messageFormattings": [],
+            "codeVariants": [],
+            "cleanCodeAttribute": "LOGICAL",
+            "cleanCodeAttributeCategory": "INTENTIONAL",
+            "impacts": [
+                {
+                    "softwareQuality": "RELIABILITY",
+                    "severity": "MEDIUM"
+                }
+            ],
+            "issueStatus": "OPEN",
+            "prioritizedRule": false
+        },
+        {
+            "key": "66a039a4-978a-4262-8cef-11843c19728a",
+            "rule": "csharpsquid:S2259",
+            "severity": "MAJOR",
+            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+            "project": "EAR-AA-28260_AMPTLMCalculations",
+            "line": 1639,
+            "hash": "731318bdbf4cc49f432e9154773e3e7c",
+            "textRange": {
+                "startLine": 1639,
+                "endLine": 1639,
+                "startOffset": 38,
+                "endOffset": 72
+            },
+            "flows": [
+                {
+                    "locations": [
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 1639,
+                                "endLine": 1639,
+                                "startOffset": 38,
+                                "endOffset": 72
+                            },
+                            "msg": "Then a \u0027NullReferenceException\u0027 is thrown",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 1639,
+                                "endLine": 1639,
+                                "startOffset": 38,
+                                "endOffset": 72
+                            },
+                            "msg": "If the expression is \u0027null\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+                            "textRange": {
+                                "startLine": 1637,
+                                "endLine": 1637,
+                                "startOffset": 45,
+                                "endOffset": 74
+                            },
+                            "msg": "If the expression is \u0027true\u0027",
+                            "msgFormattings": []
+                        }
+                    ],
+                    "description": "Execution Flow",
+                    "type": "EXECUTION"
+                }
+            ],
+            "status": "OPEN",
+            "message": "\u0027orderedUsageRates.FirstOrDefault()\u0027 is null on at least one execution path.",
+            "effort": "10min",
+            "debt": "10min",
+            "author": "",
+            "tags": [
+                "cwe"
+            ],
+            "transitions": [
+                "accept",
+                "falsepositive",
+                "confirm",
+                "resolve",
+                "wontfix"
+            ],
+            "actions": [
+                "set_type",
+                "set_tags",
+                "comment",
+                "set_severity",
+                "assign"
+            ],
+            "comments": [],
+            "creationDate": "2026-03-11T05:09:54+0000",
+            "updateDate": "2026-03-11T05:09:54+0000",
+            "type": "BUG",
+            "branch": "sonar-stg",
+            "scope": "MAIN",
+            "quickFixAvailable": false,
+            "messageFormattings": [],
+            "codeVariants": [],
+            "cleanCodeAttribute": "LOGICAL",
+            "cleanCodeAttributeCategory": "INTENTIONAL",
+            "impacts": [
+                {
+                    "softwareQuality": "RELIABILITY",
+                    "severity": "MEDIUM"
+                }
+            ],
+            "issueStatus": "OPEN",
+            "prioritizedRule": false
+        },
+        {
+            "key": "9b988f57-dc90-4d2f-9cb9-2a3e69c67517",
+            "rule": "csharpsquid:S2259",
+            "severity": "MAJOR",
+            "component": "EAR-AA-28260_AMPTLMCalculations:TLMCaluculationsCommon/DBRequestService/SqlService.cs",
+            "project": "EAR-AA-28260_AMPTLMCalculations",
+            "line": 85,
+            "hash": "841423a07362542f39cfd28634040a60",
+            "textRange": {
+                "startLine": 85,
+                "endLine": 85,
+                "startOffset": 26,
+                "endOffset": 36
+            },
+            "flows": [
+                {
+                    "locations": [
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:TLMCaluculationsCommon/DBRequestService/SqlService.cs",
+                            "textRange": {
+                                "startLine": 85,
+                                "endLine": 85,
+                                "startOffset": 26,
+                                "endOffset": 36
+                            },
+                            "msg": "Then a \u0027NullReferenceException\u0027 is thrown",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:TLMCaluculationsCommon/DBRequestService/SqlService.cs",
+                            "textRange": {
+                                "startLine": 84,
+                                "endLine": 84,
+                                "startOffset": 20,
+                                "endOffset": 38
+                            },
+                            "msg": "\u0027connection\u0027 is \u0027null\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:TLMCaluculationsCommon/DBRequestService/SqlService.cs",
+                            "textRange": {
+                                "startLine": 76,
+                                "endLine": 76,
+                                "startOffset": 19,
+                                "endOffset": 33
+                            },
+                            "msg": "If \u0027_conn\u0027 is \u0027null\u0027 and the expression is \u0027false\u0027",
+                            "msgFormattings": []
+                        }
+                    ],
+                    "description": "Execution Flow",
+                    "type": "EXECUTION"
+                }
+            ],
+            "status": "OPEN",
+            "message": "\u0027connection\u0027 is null on at least one execution path.",
+            "effort": "10min",
+            "debt": "10min",
+            "author": "",
+            "tags": [
+                "cwe"
+            ],
+            "transitions": [
+                "accept",
+                "falsepositive",
+                "confirm",
+                "resolve",
+                "wontfix"
+            ],
+            "actions": [
+                "set_type",
+                "set_tags",
+                "comment",
+                "set_severity",
+                "assign"
+            ],
+            "comments": [],
+            "creationDate": "2026-03-11T05:09:54+0000",
+            "updateDate": "2026-03-11T05:09:54+0000",
+            "type": "BUG",
+            "branch": "sonar-stg",
+            "scope": "MAIN",
+            "quickFixAvailable": false,
+            "messageFormattings": [],
+            "codeVariants": [],
+            "cleanCodeAttribute": "LOGICAL",
+            "cleanCodeAttributeCategory": "INTENTIONAL",
+            "impacts": [
+                {
+                    "softwareQuality": "RELIABILITY",
+                    "severity": "MEDIUM"
+                }
+            ],
+            "issueStatus": "OPEN",
+            "prioritizedRule": false
+        },
+        {
+            "key": "603034f6-056b-46bc-b3fe-26b6ea10d2b0",
+            "rule": "csharpsquid:S2259",
+            "severity": "MAJOR",
+            "component": "EAR-AA-28260_AMPTLMCalculations:TLMCaluculationsCommon/RabbitMessageQueueService/RabbitMQService.cs",
+            "project": "EAR-AA-28260_AMPTLMCalculations",
+            "line": 126,
+            "hash": "e779cb85bc191bbe9c531ce4bc193524",
+            "textRange": {
+                "startLine": 126,
+                "endLine": 126,
+                "startOffset": 16,
+                "endOffset": 23
+            },
+            "flows": [
+                {
+                    "locations": [
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:TLMCaluculationsCommon/RabbitMessageQueueService/RabbitMQService.cs",
+                            "textRange": {
+                                "startLine": 126,
+                                "endLine": 126,
+                                "startOffset": 16,
+                                "endOffset": 23
+                            },
+                            "msg": "Then a \u0027NullReferenceException\u0027 is thrown",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:TLMCaluculationsCommon/RabbitMessageQueueService/RabbitMQService.cs",
+                            "textRange": {
+                                "startLine": 116,
+                                "endLine": 116,
+                                "startOffset": 20,
+                                "endOffset": 40
+                            },
+                            "msg": "If \u0027connRetryCount\u0027 is \u0027Number from 1 to 19\u0027 and the expression is \u0027false\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:TLMCaluculationsCommon/RabbitMessageQueueService/RabbitMQService.cs",
+                            "textRange": {
+                                "startLine": 113,
+                                "endLine": 113,
+                                "startOffset": 24,
+                                "endOffset": 42
+                            },
+                            "msg": "If the expression is \u0027not null\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:TLMCaluculationsCommon/RabbitMessageQueueService/RabbitMQService.cs",
+                            "textRange": {
+                                "startLine": 112,
+                                "endLine": 112,
+                                "startOffset": 24,
+                                "endOffset": 70
+                            },
+                            "msg": "If the expression is \u0027not null\u0027",
+                            "msgFormattings": []
+                        },
+                        {
+                            "component": "EAR-AA-28260_AMPTLMCalculations:TLMCaluculationsCommon/RabbitMessageQueueService/RabbitMQService.cs",
+                            "textRange": {
+                                "startLine": 88,
+                                "endLine": 88,
+                                "startOffset": 20,
+                                "endOffset": 34
+                            },
+                            "msg": "\u0027channel\u0027 is \u0027null\u0027",
+                            "msgFormattings": []
+                        }
+                    ],
+                    "description": "Execution Flow",
+                    "type": "EXECUTION"
+                }
+            ],
+            "status": "OPEN",
+            "message": "\u0027channel\u0027 is null on at least one execution path.",
+            "effort": "10min",
+            "debt": "10min",
+            "author": "",
+            "tags": [
+                "cwe"
+            ],
+            "transitions": [
+                "accept",
+                "falsepositive",
+                "confirm",
+                "resolve",
+                "wontfix"
+            ],
+            "actions": [
+                "set_type",
+                "set_tags",
+                "comment",
+                "set_severity",
+                "assign"
+            ],
+            "comments": [],
+            "creationDate": "2026-03-11T05:09:54+0000",
+            "updateDate": "2026-03-11T05:09:54+0000",
+            "type": "BUG",
+            "branch": "sonar-stg",
+            "scope": "MAIN",
+            "quickFixAvailable": false,
+            "messageFormattings": [],
+            "codeVariants": [],
+            "cleanCodeAttribute": "LOGICAL",
+            "cleanCodeAttributeCategory": "INTENTIONAL",
+            "impacts": [
+                {
+                    "softwareQuality": "RELIABILITY",
+                    "severity": "MEDIUM"
+                }
+            ],
+            "issueStatus": "OPEN",
+            "prioritizedRule": false
+        }
+    ],
+    "components": [
+        {
+            "key": "EAR-AA-28260_AMPTLMCalculations",
+            "enabled": true,
+            "qualifier": "TRK",
+            "name": "CHX_AssetManagment_AMPTLMCalculations_API",
+            "longName": "CHX_AssetManagment_AMPTLMCalculations_API",
+            "branch": "sonar-stg"
+        },
+        {
+            "key": "EAR-AA-28260_AMPTLMCalculations:TLMCaluculationsCommon/RabbitMessageQueueService/RabbitMQService.cs",
+            "enabled": true,
+            "qualifier": "FIL",
+            "name": "RabbitMQService.cs",
+            "longName": "TLMCaluculationsCommon/RabbitMessageQueueService/RabbitMQService.cs",
+            "path": "TLMCaluculationsCommon/RabbitMessageQueueService/RabbitMQService.cs",
+            "branch": "sonar-stg"
+        },
+        {
+            "key": "EAR-AA-28260_AMPTLMCalculations:TLMCaluculationsCommon/DBRequestService/SqlService.cs",
+            "enabled": true,
+            "qualifier": "FIL",
+            "name": "SqlService.cs",
+            "longName": "TLMCaluculationsCommon/DBRequestService/SqlService.cs",
+            "path": "TLMCaluculationsCommon/DBRequestService/SqlService.cs",
+            "branch": "sonar-stg"
+        },
+        {
+            "key": "EAR-AA-28260_AMPTLMCalculations:CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+            "enabled": true,
+            "qualifier": "FIL",
+            "name": "ProcessInjectionPointsMessage.cs",
+            "longName": "CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+            "path": "CalculateTargetRates/ProcessInjectionPointsMessage.cs",
+            "branch": "sonar-stg"
+        }
+    ],
+    "rules": [
+        {
+            "key": "csharpsquid:S2259",
+            "name": "Null pointers should not be dereferenced",
+            "lang": "cs",
+            "status": "READY",
+            "langName": "C#"
+        },
+        {
+            "key": "csharpsquid:S1244",
+            "name": "Floating point numbers should not be tested for equality",
+            "lang": "cs",
+            "status": "READY",
+            "langName": "C#"
+        }
+    ],
+    "users": [
+        {
+            "login": "nandkumar41142",
+            "name": "Nandkumar",
+            "avatar": "09c8d884cf50826d4293a8083e4295e5",
+            "active": true
+        }
+    ],
+    "languages": [
+        {
+            "key": "cs",
+            "name": "C#"
+        },
+        {
+            "key": "plsql",
+            "name": "PL/SQL"
+        },
+        {
+            "key": "java",
+            "name": "Java"
+        },
+        {
+            "key": "xml",
+            "name": "XML"
+        },
+        {
+            "key": "swift",
+            "name": "Swift"
+        },
+        {
+            "key": "c",
+            "name": "C"
+        },
+        {
+            "key": "cpp",
+            "name": "C++"
+        },
+        {
+            "key": "objc",
+            "name": "Objective-C"
+        },
+        {
+            "key": "py",
+            "name": "Python"
+        },
+        {
+            "key": "ipynb",
+            "name": "IPython Notebooks"
+        },
+        {
+            "key": "vbnet",
+            "name": "VB.NET"
+        },
+        {
+            "key": "vb",
+            "name": "Vb"
+        },
+        {
+            "key": "apex",
+            "name": "Apex"
+        },
+        {
+            "key": "js",
+            "name": "JavaScript"
+        },
+        {
+            "key": "ts",
+            "name": "TypeScript"
+        },
+        {
+            "key": "css",
+            "name": "CSS"
+        },
+        {
+            "key": "grvy",
+            "name": "Groovy"
+        },
+        {
+            "key": "abap",
+            "name": "ABAP"
+        },
+        {
+            "key": "ansible",
+            "name": "Ansible"
+        },
+        {
+            "key": "terraform",
+            "name": "Terraform"
+        },
+        {
+            "key": "cloudformation",
+            "name": "CloudFormation"
+        },
+        {
+            "key": "kubernetes",
+            "name": "Kubernetes"
+        },
+        {
+            "key": "docker",
+            "name": "Docker"
+        },
+        {
+            "key": "azureresourcemanager",
+            "name": "AzureResourceManager"
+        },
+        {
+            "key": "yaml",
+            "name": "YAML"
+        },
+        {
+            "key": "json",
+            "name": "JSON"
+        },
+        {
+            "key": "scala",
+            "name": "Scala"
+        },
+        {
+            "key": "dart",
+            "name": "Dart"
+        },
+        {
+            "key": "jcl",
+            "name": "JCL"
+        },
+        {
+            "key": "web",
+            "name": "HTML"
+        },
+        {
+            "key": "jsp",
+            "name": "JSP"
+        },
+        {
+            "key": "flex",
+            "name": "Flex"
+        },
+        {
+            "key": "cf",
+            "name": "ColdFusion"
+        },
+        {
+            "key": "go",
+            "name": "Go"
+        },
+        {
+            "key": "kotlin",
+            "name": "Kotlin"
+        },
+        {
+            "key": "rpg",
+            "name": "RPG"
+        },
+        {
+            "key": "pli",
+            "name": "PL/I"
+        },
+        {
+            "key": "tsql",
+            "name": "T-SQL"
+        },
+        {
+            "key": "ruby",
+            "name": "Ruby"
+        },
+        {
+            "key": "secrets",
+            "name": "Secrets"
+        },
+        {
+            "key": "text",
+            "name": "Text"
+        },
+        {
+            "key": "cobol",
+            "name": "COBOL"
+        },
+        {
+            "key": "php",
+            "name": "PHP"
+        }
+    ],
+    "facets": [
+        {
+            "property": "severities",
+            "values": [
+                {
+                    "val": "MAJOR",
+                    "count": 10
+                },
+                {
+                    "val": "INFO",
+                    "count": 0
+                },
+                {
+                    "val": "MINOR",
+                    "count": 0
+                },
+                {
+                    "val": "CRITICAL",
+                    "count": 0
+                },
+                {
+                    "val": "BLOCKER",
+                    "count": 0
+                }
+            ]
+        },
+        {
+            "property": "types",
+            "values": [
+                {
+                    "val": "CODE_SMELL",
+                    "count": 369
+                },
+                {
+                    "val": "BUG",
+                    "count": 10
+                },
+                {
+                    "val": "VULNERABILITY",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "property": "cleanCodeAttributeCategories",
+            "values": [
+                {
+                    "val": "INTENTIONAL",
+                    "count": 10
+                },
+                {
+                    "val": "ADAPTABLE",
+                    "count": 0
+                },
+                {
+                    "val": "CONSISTENT",
+                    "count": 0
+                },
+                {
+                    "val": "RESPONSIBLE",
+                    "count": 0
+                }
+            ]
+        },
+        {
+            "property": "impactSoftwareQualities",
+            "values": [
+                {
+                    "val": "MAINTAINABILITY",
+                    "count": 0
+                },
+                {
+                    "val": "RELIABILITY",
+                    "count": 10
+                },
+                {
+                    "val": "SECURITY",
+                    "count": 0
+                }
+            ]
+        },
+        {
+            "property": "impactSeverities",
+            "values": [
+                {
+                    "val": "BLOCKER",
+                    "count": 0
+                },
+                {
+                    "val": "HIGH",
+                    "count": 0
+                },
+                {
+                    "val": "INFO",
+                    "count": 0
+                },
+                {
+                    "val": "LOW",
+                    "count": 0
+                },
+                {
+                    "val": "MEDIUM",
+                    "count": 10
+                }
+            ]
+        }
+    ]
+}
