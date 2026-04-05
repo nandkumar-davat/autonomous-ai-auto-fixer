@@ -4,6 +4,7 @@ agent:
   mode: dry-run  # options: dry-run, fix
   max_retries: 3
   risk_policy: low-risk-only
+  base_branch: main
 
 vcs:
   primary: azure-devops
@@ -16,6 +17,11 @@ vcs:
 
 llm:
   provider: github-copilot
+  providers:
+    - github_copilot
+    - gemini
+    - openrouter
+    - ollama
   model: auto
   temperature: 0.0
   max_tokens: 4096
@@ -26,6 +32,29 @@ secrets:
   tenant_id: null
   github_token_secret_name: "github-token"
 
+# ── Severity Filters ────────────────────────────────────────────────
+# Per-scanner thresholds controlling which findings enter the pipeline.
+severity_filters:
+  mend:
+    min_severity: HIGH
+    include_types:
+      - VULNERABILITY
+    exclude_types: []
+  trivy:
+    min_severity: HIGH
+    include_types:
+      - VULNERABILITY
+      - MISCONFIGURATION
+    exclude_types: []
+  sonarqube:
+    min_severity: MAJOR
+    include_types:
+      - BUG
+      - VULNERABILITY
+      - CODE_SMELL
+    exclude_types: []
+
+# ── Ingestion ────────────────────────────────────────────────────────
 ingestion:
   sonarqube:
     url: null
@@ -35,6 +64,7 @@ ingestion:
   trivy:
     enabled: true
 
+# ── Remediation ──────────────────────────────────────────────────────
 remediation:
   priority_order:
     - BUG
@@ -48,6 +78,7 @@ remediation:
     - HIGH
   context_lines: 50
 
+# ── Validation ───────────────────────────────────────────────────────
 validation:
   linters:
     python: ["flake8", "black", "isort"]

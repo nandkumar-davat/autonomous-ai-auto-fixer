@@ -2,24 +2,35 @@
 
 ## System Architecture
 
-The Autonomous AI Auto-Fixer is built as a modular pipeline:
+The Autonomous AI Auto-Fixer uses a **multi-agent pipeline** with four specialized agents:
 
-1.  **Ingestion Layer**: Fetches data from SonarQube (Clean Code), Mend (SCA), and Trivy (Container/SCM).
-2.  **Remediation Engine**: Processes, sorts, and classifies findings based on risk policy.
-3.  **Strategy Layer**: Selects specific logic (CodeSmell, Dependency, Security) to apply fixes.
-4.  **AI Orchestration**: Uses GitHub Copilot / Claude 3.5 to generate code and self-correct based on validation feedback.
-5.  **VCS Layer**: Manages Git operations and Pull Requests on Azure DevOps (Primary) and GitHub.
-
-```mermaid
-graph LR
-    A[Sources] --> B[Ingestors]
-    B --> C[Risk Assessor]
-    C --> D[Remediation Engine]
-    D --> E[Strategies]
-    E --> F[LLM Generation]
-    F --> G[Validation Loop]
-    G --> H[VCS / PR]
 ```
+Scan Reports (Mend/Trivy/SonarQube)
+        ||
+   [Auditor x3]  <-- parallel execution (one per scanner)
+        ||
+   [Team Lead]   <-- consolidate findings, deduplicate, resolve conflicts
+        ||
+   [Fixer]       <-- apply fixes, lint loop with retries, commit, PR
+        ||
+   [Verifier]    <-- re-check, validate no regressions
+```
+
+### Agent Descriptions
+
+| Agent | Responsibility |
+|-------|----------------|
+| **Auditor** | Parses scan reports, filters by severity, proposes fix strategies |
+| **Team Lead** | Merges audit plans, deduplicates findings, resolves version/line conflicts |
+| **Fixer** | Applies fixes, runs lint/build verification, commits changes, creates PR |
+| **Verifier** | Re-runs lint/build checks, detects regressions via LLM |
+
+### Legacy Components (still used)
+
+1.  **Ingestion Layer**: Fetches data from SonarQube, Mend, and Trivy.
+2.  **Strategy Layer**: CodeSmell, Dependency, Security strategies.
+3.  **LLM Layer**: Multi-provider support (GitHub Copilot, Gemini, OpenRouter, Ollama).
+4.  **VCS Layer**: Git operations and Pull Requests on Azure DevOps/GitHub.
 
 ## Tech Stack Details
 

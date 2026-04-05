@@ -1,162 +1,57 @@
 # Autonomous AI Auto-Fixer
 
-The **Autonomous AI Auto-Fixer** is an enterprise-grade agent designed to automate the remediation of technical debt and security vulnerabilities. It integrates with **SonarQube**, **Mend**, and **Trivy** to ingest findings, generate validated code fixes using AI, and submit Pull Requests to **Azure Repos** and **GitHub**.
-
-- [Implementation Plan](IMPLEMENTATION_PLAN.md)
-- [Task List](TASKS.md)
-- [Configuration & Ingestion Guide](docs/configuration.md)
-- [Architecture & Tech Stack](docs/architecture.md)
-- [Architecture Diagram (Draw.io)](docs/architecture.drawio)
-- [Deployment & Execution Guide](docs/deployment.md)
-- [Testing & Verification Guide](docs/testing_guide.md)
-
-
-## Current Progress
-- [x] **Phase 1**: Core Framework & VCS Integration (Azure DevOps, GitHub)
-- [x] **Phase 2**: SonarQube Integration (API & File Ingestion)
-- [x] **Phase 3**: Mend Integration (SCA, PDF/Excel/CSV)
-- [x] **Phase 4**: Trivy Integration (Container & OS Scanning)
-- [x] **Phase 5**: Remediation Engine (Linter validation, CI hooks, LLM Retries)
-- [x] **Phase 6**: Testing, Deployment & Documentation
+An enterprise-grade AI-powered agent for automated remediation of security vulnerabilities and code quality findings.
 
 ## Key Features
-- **Autonomous Remediation**: Automatically fixes code smells, bugs, and dependency vulnerabilities using CodeSmell and Dependency strategies.
-- **VCS Clients**: Robust integration with Azure DevOps and GitHub for PR management.
-- **Risk Assessment**: Classifies findings into Low/High risk to ensure only safe changes are automated.
-- **Multi-Tool Ingestion**: Unified ingestion from SonarQube and Mend (vulnerability and technical debt).
-- **PR Monitoring**: Human-in-the-loop support via comment polling.
-- **Dry-Run Mode**: Supports a "Report Only" mode for human approval before applying any fixes.
-- **Enterprise-Grade Security**: Integrated with Azure Key Vault for secure credential management.
 
-## Tech Stack
+- **Multi-Agent Architecture**: Four specialized agents work in sequence:
+  - **Auditor** (3 parallel) - Analyzes Mend, Trivy, and SonarQube scan reports
+  - **Team Lead** - Consolidates findings, deduplicates, resolves conflicts
+  - **Fixer** - Applies fixes, runs lint/build verification, commits & creates PR
+  - **Verifier** - Re-checks fixes, validates no regressions
 
-- **Language**: Python 3.11+
-- **Agent Orchestration**: Custom AI reasoning loops
-- **Runtime LLM**: GitHub Copilot / Claude Sonnet 4
-- **VCS**: Azure DevOps Python SDK, PyGithub
-- **Secrets**: Azure Key Vault
-- **Infrastructure**: Containerized deployment (Docker/Kubernetes)
+- **Multi-LLM Support**: Configurable providers with automatic fallback:
+  - GitHub Copilot (default: "auto" mode)
+  - Google Gemini Flash
+  - OpenRouter (free tier)
+  - Ollama (local models)
 
-## Setup
+- **Scanner Integration**: SonarQube, Mend (WhiteSource), Trivy
+- **VCS Integration**: Azure DevOps and GitHub
+- **Risk Assessment**: Low/High classification for safe automation
+- **Dry-Run Mode**: Preview changes before applying
 
-### Prerequisites
+## Quick Start
 
-- Python 3.11 or higher
-- Access to Azure Key Vault (with appropriate secrets configured)
-- VCS Credentials (PAT for Azure DevOps, GitHub App credentials)
-
-### Installation
-
-1. Create a virtual environment:
-   ```bash
-   python -m venv .venv
-   ```
-
-2. Activate the virtual environment:
-   - **Windows**: `.venv\Scripts\Activate.ps1`
-   - **Linux/macOS**: `source .venv/bin/activate`
-
-3. Install the package in editable mode:
-   ```bash
-   pip install -e ".[dev]"
-   ```
-
-## Usage
-
-Run the autofixer in dry-run mode:
 ```bash
-autofixer --mode dry-run
+cd autonomous-ai-auto-fixer
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+
+# Batch mode
+autofixer run --repo /path/to/repo --sonar-report scan.json --mode dry-run
+
+# Interactive mode
+autofixer chat --repo /path/to/repo --base-branch main
 ```
 
-Review the report and approve fixes:
-```bash
-autofixer --mode fix --approve-all
+## Architecture
+
+```
+Pipeline Flow:
+Scan Reports (Mend/Trivy/SonarQube)
+        ||
+   [Auditor x3]  <-- parallel execution
+        ||
+   [Team Lead]   <-- consolidate & deduplicate
+        ||
+   [Fixer]       <-- apply fixes, lint, commit, PR
+        ||
+   [Verifier]    <-- re-check, validate no regressions
 ```
 
-## Audit & Logging
-
-
-The system maintains a tamper-proof audit log of all actions, including:
-- Ingested findings
-- Generated prompts and LLM responses
-- Validation results
-- PR creation details
-
----
-
-## Architecture Overview
-
-The Autonomous AI Auto-Fixer is built as a modular pipeline:
-
-1. **Ingestion Layer**: Fetches data from SonarQube (Clean Code), Mend (SCA), and Trivy (Container/SCM).
-2. **Remediation Engine**: Processes, sorts, and classifies findings based on risk policy.
-3. **Strategy Layer**: Selects specific logic (CodeSmell, Dependency, Security) to apply fixes.
-4. **AI Orchestration**: Uses GitHub Copilot / Claude 3.5 to generate code and self-correct based on validation feedback.
-5. **VCS Layer**: Manages Git operations and Pull Requests on Azure DevOps (Primary) and GitHub.
-
-```mermaid
-graph LR
-      A[Sources] --> B[Ingestors]
-      B --> C[Risk Assessor]
-      C --> D[Remediation Engine]
-      D --> E[Strategies]
-      E --> F[LLM Generation]
-      F --> G[Validation Loop]
-      G --> H[VCS / PR]
-```
-
----
-
-## Configuration & Ingestion
-
-**API-Based Ingestion:**
-- Configure SonarQube, Mend, and Trivy API details in `config/default.yaml`.
-- Secrets (tokens/keys) are retrieved from Azure Key Vault or environment variables.
-
-**File-Based Ingestion:**
-- Pass exported reports (JSON, PDF, Excel, CSV, SARIF) via the CLI `--input-file` flag.
-- Place files in `data/inputs/` for automatic scanning.
-
-**Repository Mapping:**
-- The agent maps findings to repositories using metadata in reports or CLI flags.
-
----
-
-## Deployment
-
-**Containerized:**
-- Deploy on Azure Container Apps, AKS, or locally with Docker Compose.
-- Use the provided `Dockerfile` and `docker-compose.yml`.
-
-**CLI Usage:**
-- Run locally after `pip install -e .` or in a container.
-- Example:
-   ```bash
-   autofixer --mode dry-run --repo "my-org/my-repo" --branch "develop"
-   autofixer --mode fix --input-file "./manual_reports/mend_vulnerabilities.pdf" --repo "my-org/web-app"
-   ```
-
-**PR Workflow:**
-- The agent creates PRs in Azure DevOps or GitHub with detailed descriptions and validation evidence.
-- Human reviewers can comment on PRs; the agent will attempt to address feedback automatically.
-
----
-
-## Testing & Verification
-
-**Dry-Run Safety:**
-- Run in dry-run mode to preview changes without modifying code.
-
-**Validation:**
-- All fixes are validated with linters and optional CI build checks.
-- Self-correction loop: If a fix fails validation, the agent retries with improved suggestions.
-
-**PR Comment Interaction:**
-- Human-in-the-loop: Reviewer comments on PRs are detected and can trigger automated follow-up commits.
-
----
-
-## References & Documentation
+## Documentation
 
 - [Implementation Plan](IMPLEMENTATION_PLAN.md)
 - [Task List](TASKS.md)
@@ -164,3 +59,40 @@ graph LR
 - [Architecture & Tech Stack](docs/architecture.md)
 - [Deployment & Execution Guide](docs/deployment.md)
 - [Testing & Verification Guide](docs/testing_guide.md)
+
+## Configuration
+
+Edit `config/default.yaml`:
+
+```yaml
+llm:
+  provider: github-copilot
+  providers: [github_copilot, gemini, openrouter, ollama]
+  model: auto
+
+agent:
+  mode: dry-run
+  max_retries: 3
+  base_branch: main
+
+severity_filters:
+  mend:
+    min_severity: HIGH
+    include_types: [VULNERABILITY]
+  trivy:
+    min_severity: HIGH
+    include_types: [VULNERABILITY, MISCONFIGURATION]
+  sonarqube:
+    min_severity: MAJOR
+    include_types: [BUG, VULNERABILITY, CODE_SMELL]
+```
+
+## Current Progress
+
+- [x] Phase 1: Core Framework & VCS Integration
+- [x] Phase 2: SonarQube Integration
+- [x] Phase 3: Mend Integration
+- [x] Phase 4: Trivy Integration
+- [x] Phase 5: Remediation Engine & Validation
+- [x] Phase 6: Multi-Agent Orchestration
+- [x] Phase 7: Testing & Documentation
